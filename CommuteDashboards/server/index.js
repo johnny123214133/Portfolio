@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import {indexRouter, locationRouter, routeRouter, tripRouter} from './routes/index.js'
 import ErrorResponse from './utils/errorResponse.js'
 
-dotenv.config()
+dotenv.config({path : '../.env'})
 
 let apiPort = process.env.API_PORT
 
