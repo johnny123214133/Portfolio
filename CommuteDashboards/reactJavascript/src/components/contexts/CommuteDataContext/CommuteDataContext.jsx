@@ -43,6 +43,14 @@ export default function CommuteDataContext({Children}) {
 	useEffect(() => {
 		// prevent calls on initial mount, and when state gets rolled back from errors
 		if (!params) return
+		if (import.meta.env.VITE_GOOGLE_MAPS_API_KEY.length == 0) {
+			alert('Please add a Google Maps API key to the .env file')
+			return
+		}
+		if (import.meta.env.VITE_COMMUTE_MAP_ID.length == 0) {
+			alert('Please add a Map ID to the .env file')
+			return
+		}
 
 		const fetchData = async () => {
 			try {
