@@ -35,9 +35,15 @@ def execute_commands():
 if __name__ == "__main__":
 	if len(sys.argv) != 2 or sys.argv[1] not in ['create', 'delete']:
 		print('Must include command \"create\" or \"delete\"')
+	elif (
+			os.environ.get('MYSQL_HOST') is None or 
+			os.environ.get('MYSQL_USER') is None or 
+			os.environ.get('MYSQL_PASSWORD') is None or 
+			os.environ.get('MYSQL_DB') is None):
+		print('Missing MySQL credentials. Please add to TODO')
 	else:
 		command = sys.argv[1]
 		print('started')
-		# execute_commands()
+		execute_commands()
 		print('finished')
 

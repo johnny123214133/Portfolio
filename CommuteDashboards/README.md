@@ -18,6 +18,18 @@ And I plan to add the following:
 Each flavor interacts with a locally hosted server, built in Node, available in the server directory. I've included some configuration options to help you get it up and running.
 
 
+Setup:
+
+The server uses a MySQL database to persist data obtained from Google Maps.
+To set up the database:
+
+1. ensure your local MySQL instance is running
+2. add your MySQL credentials to TODO
+3. navigate to the server/config directory
+4. execute the command `python3 setupTeardown.py COMMAND` replacing COMMAND with 'create' or 'delete'
+
+
+
 To run the server:
 
 
