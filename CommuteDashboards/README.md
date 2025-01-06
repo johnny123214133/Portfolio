@@ -1,5 +1,16 @@
 # Commute Dashboards of Various Flavors
 
+## TODO:
+
+1. fix Vue + JS sticky navbar (not sticky)
+2. fix Vue + JS apexchart not drawing boxplot until chart is interacted with
+3. refactor dashboards: 
+	- clean up project structure
+	- clean up bad code
+	- clean up component architecture
+
+## About
+
 I built and rebuilt a web app that forcasts traffic conditions along the user's commute and in the hours and days surrounding the inputted day and time. 
 
 [This website](https://zachrichards.dev/) is a React + Javascript version of the dashboard hosted on AWS.
