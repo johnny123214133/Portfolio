@@ -1,0 +1,30 @@
+{
+  "name": "vue-javascript",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "apexcharts": "^4.3.0",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue-next": "^0.25.14",
+    "lodash": "^4.17.21",
+    "mdb-vue-ui-kit": "^6.0.0",
+    "vue": "^3.5.13",
+    "vue-mq": "^1.0.1",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vue3-apexcharts": "^1.8.0",
+    "vue3-google-map": "^0.21.0",
+    "vue3-mq": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.3"
+  }
+}
