@@ -1,13 +1,18 @@
 const geocodeAPIEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json'
 const routesAPIEndpoint = 'https://maps.googleapis.com/maps/api/directions/json'
+// const apiKey = process.env.VITE_VITE_GOOGLE_MAPS_API_KEY
+console.log()
 
 export async function getLocationByAddress(address) {
 	// geocode api 
 	try {
+		// console.log('getting location in GMS')
 		var params = new URLSearchParams({
 			'address' : address,
-			'key' : process.env.GOOGLE_MAPS_API_KEY
+			'key' : process.env.VITE_GOOGLE_MAPS_API_KEY
+			// 'key' : apiKey
 		})
+		// console.log(geocodeAPIEndpoint + '?' + params)
 		var response = await fetch(geocodeAPIEndpoint + '?' + params)
 		.then(function(response) {
 			return response.json();
@@ -30,11 +35,13 @@ export async function getLocationByAddress(address) {
 
 export async function getLocationByLatLng(lat, lng) {
 	try {
+		// console.log('getting location in GMS')
 		var params = new URLSearchParams({
 			'latlng' : lat + ',' + lng,
 			'location_type' : 'ROOFTOP',
 			'result_type' : 'street_address',
-			'key' : process.env.GOOGLE_MAPS_API_KEY
+			'key' : process.env.VITE_GOOGLE_MAPS_API_KEY
+			// 'key' : apiKey
 		})
 		// the topmost result is the most specific address for the given coordinates,
 		// according to Google's API documentation
@@ -61,13 +68,15 @@ export async function getLocationByLatLng(lat, lng) {
 export async function getTrip(origin, destination, departureTime, trafficModel='best_guess') {
 	// console.log(trafficModel)
 	try {
+		// console.log('getting trip in GMS')
 		var params = new URLSearchParams({
 			'destination' : destination,
 			'origin' : origin,
 			'departure_time' : departureTime,
 			'traffic_model' : trafficModel,
 			'mode' : 'driving',
-			'key' : process.env.GOOGLE_MAPS_API_KEY
+			'key' : process.env.VITE_GOOGLE_MAPS_API_KEY
+			// 'key' : apiKey
 		})
 		params = new URLSearchParams(params)
 		return await fetch(routesAPIEndpoint + '?' + params)
@@ -90,6 +99,7 @@ export async function getTrip(origin, destination, departureTime, trafficModel='
 
 export async function getTripDuration(origin, destination, departureTime, trafficModel='best_guess') {
 	try {
+		// console.log('getting trip duration in GMS')
 		var response = await getTrip(origin, destination, departureTime, trafficModel).then(trip => {
 			// console.log(trip)
 			return trip
@@ -115,6 +125,7 @@ function durationInMinutes(numSeconds) {
 
 export async function getCoordsFromAddress(address) {
 	try {
+		// console.log('getting coords in GMS')
 		var response = await getLocationByAddress(address)
 		// console.log(response)
 		if (response.status === 'NOT_FOUND' || response.status ==='ZERO_RESULTS') {
@@ -132,6 +143,7 @@ export async function getCoordsFromAddress(address) {
 
 export async function getAddressFromCoords(lat, lng) {
 	try {
+		// console.log('getting address from coords in GMS')
 		var response = await getLocationByLatLng(lat, lng)
 		if (response.status === 'NOT_FOUND' || response.status ==='ZERO_RESULTS') {
 			throw {name: 'Google Resource Not Found', message: 'Address for given coordinates does not exist.'}

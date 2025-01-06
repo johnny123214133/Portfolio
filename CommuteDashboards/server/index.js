@@ -12,11 +12,6 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// app.get('/', async(req, res) => {
-// 	console.log('default response')
-// 	res.send('api root')
-// })
-
 app.use('/', indexRouter)
 app.use('/location', locationRouter)
 app.use('/route', routeRouter)
